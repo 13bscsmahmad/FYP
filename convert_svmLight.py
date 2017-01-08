@@ -1,6 +1,6 @@
 
-f = open("train_numeric.csv","r") ##original file
-g = open("train_numeric_svmLight","w") ##same data in svmLight format 
+f = open("/media/meesam/extended/\"Bosch Assembly LIne Data\"/train_numeric.csv","r") ##original file
+g = open("train_numeric_svmLight_imputed0","w") ##same data in svmLight format 
 
 
 a = f.readlines()
