@@ -1,7 +1,10 @@
 """
 
-This script trains a one-class SVM (support vector machine).
-Input: libsvm format with only 0s
+This script trains a Support Vector Classifier (SVC) or one-class SVM (support vector machine).
+To choose between the two, uncomment the relevant lines.
+
+Input: [SVC]: libsvm format
+       [One-class SVM]: ibsvm format with only 0s
 
 
 """
@@ -17,18 +20,20 @@ import pickle
 
 # In[33]:
 print "loading dataset..."
-X_train, y_train = load_svmlight_file("train_numeric_svmLight.txt")
+#X_train, y_train = load_svmlight_file("train_numeric_svmLight.txt") # SVC
+X_train, y_train = load_svmlight_file("train_numeric_svmLight_all0s") # SVM
 
 
 # In[34]:
 
-clf = svm.SVC(verbose=3)
+#clf = svm.SVC(verbose=3) # SVC
+clf = svm.OneClassSVM(verbose=3)  # SVM
 print "starting training..."
 clf = clf.fit(X_train, y_train)
 print "saving model..."
 #s = pickle.dumps(clf)
-joblib.dump(clf, 'one-class-svm.pkl') # to read back, clf = joblib.load('filename.pkl') 
-
+#joblib.dump(clf, 'one-class-svm.pkl') # to read back, clf = joblib.load('filename.pkl')  # SVC
+joblib.dump(clf, 'one-class-svm-final.pkl') # to read back, clf = joblib.load('filename.pkl') # SVM
 
 # In[35]:
 
