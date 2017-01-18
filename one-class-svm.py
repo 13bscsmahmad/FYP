@@ -29,8 +29,9 @@ X_train, y_train = load_svmlight_file("train_numeric_svmLight_all0s") # SVM
 #clf = svm.SVC(verbose=3) # SVC
 clf = svm.OneClassSVM(verbose=3)  # SVM
 print "starting training..."
-clf = clf.fit(X_train, y_train)
-print "saving model..."
+#clf = clf.fit(X_train, y_train) #SVC
+clf = clf.fit(X_train) # SVM
+print "saving model... "
 #s = pickle.dumps(clf)
 #joblib.dump(clf, 'one-class-svm.pkl') # to read back, clf = joblib.load('filename.pkl')  # SVC
 joblib.dump(clf, 'one-class-svm-final.pkl') # to read back, clf = joblib.load('filename.pkl') # SVM
