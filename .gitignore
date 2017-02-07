@@ -5,5 +5,7 @@ Dataset/*.csv
 Dataset/*.zip
 
 # Ignore system/application files/folders
+.DS_Store
 Dataset/.DS_Store
 Dataset/.ipynb_checkpoints
+
