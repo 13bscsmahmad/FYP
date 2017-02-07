@@ -1,0 +1,9 @@
+# Ignore all CSV & .txt files (dataset)
+IPCA/*.csv
+IPCA/*.txt
+Dataset/*.csv
+Dataset/*.zip
+
+# Ignore system/application files/folders
+Dataset/DS_Store
+Dataset/ipynb_checkpoints
