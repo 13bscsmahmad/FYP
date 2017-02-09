@@ -73,7 +73,7 @@ def main():
             file1s.close()
             fopen.close()
 
-            check(file0s_path, file1s_path)
+    check(file0s_path, file1s_path)
 
 if __name__ == "__main__":
     main() 
