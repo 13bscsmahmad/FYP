@@ -51,16 +51,21 @@ def main():
 
     # Alternate b/w 0s and 1s
 
-    for x in range(0,1000):
-    	# First copy row from 0s file
+    for x in range(0,50000): # Upper limit is (0.5 * number of total samples required)
+    
+    	# First, copy row from 0s file
     	line = fopen0s.readline().strip()
-    	#print line
-    	fopen.write(line+'\n')
-    	lines+=1
-    	# Then copy row from 1s file
+        
+        if (len(line) > 0): # to make sure there is a line in the file
+        	fopen.write(line+'\n')
+        	lines+=1
+        
+    	# Then, copy row from 1s file
     	line = fopen1s.readline().strip()
-    	fopen.write(line+'\n')
-    	lines+=1
+        
+        if (len(line) > 0): # to make sure there is a line in the file
+        	fopen.write(line+'\n')
+        	lines+=1
 
     	#myfile = open("final.csv","r+")
     print "Lines: ", lines
