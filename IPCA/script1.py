@@ -67,11 +67,11 @@ def main():
         else:
             "error at row: ", rowNumber
             exit()
-            rowNumber+=1
+        rowNumber+=1
 
-            file0s.close()
-            file1s.close()
-            fopen.close()
+    file0s.close()
+    file1s.close()
+    fopen.close()
 
     check(file0s_path, file1s_path)
 
