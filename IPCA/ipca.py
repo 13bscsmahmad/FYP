@@ -7,7 +7,7 @@ final = 100000 # variable, used to control inner loop
 for x in range(0, runScript):
 
     fileOriginal_path = "../Dataset/train_numeric.csv"
-    fileLIBSVM_path = "train_svmLight_train_numeric.txt"
+    fileLIBSVM_path = "train_numeric_svmLight.txt"
     filePCA_LIBSVM_path = str(scriptCounter) + "_train_svmLightPCA_train_numeric.txt"
 
     f = open(fileOriginal_path,"r") ##original file
