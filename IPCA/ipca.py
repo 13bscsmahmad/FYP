@@ -97,9 +97,7 @@ for x in range(0, runScript):
     XXX.close()
     del x_train[:] # to delete contents of this large list to clear memory
     del y_train[:] # to delete contents of this large list to clear memory
-    
-    
-    
+   
     scriptCounter += 1
     
     init = final
