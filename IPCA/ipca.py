@@ -7,7 +7,7 @@ final = 100000 # variable, used to control inner loop
 
 fileOriginal_path = "../Dataset/train_numeric.csv"
 fileLIBSVM_path = "../Dataset/train_numeric_svmLight.txt"
-filePCA_LIBSVM_path = str(scriptCounter) + "_train_svmLightPCA_train_numeric.txt"
+filePCA_LIBSVM_path = "train_svmLightPCA_train_numeric.txt"
 
 print "initializing..."
 
@@ -26,38 +26,39 @@ skip = 1
 print "reading raw file..."
 
 for i in f:
-	if skip == 1:
-		skip = 0
-		continue
+    if skip == 1:
+    	skip = 0
+    	continue
 
-	data = ['none'] * 968 ##the training file contains 970 values in each line, 2 are removed in data, the id and the response
+    data = ['none'] * 968 ##the training file contains 970 values in each line, 2 are removed in data, the id and the response
 
-	x = i.split(",")
-	response = x[969].strip()
-	for j in range(1,969):
-		data[j-1] = x[j]
+    x = i.split(",")
+    response = x[969].strip()
+    for j in range(1,969):
+    	data[j-1] = x[j]
 
-	y_train.append(int(response))
-	mine = [None] * 968    
-	line = ""
-	for i in range(0,968):
-		if data[i] == '' or data[i] == '0':	##assign all the features without any values with 0 value
-			data[i] = '0'
-		mine[i] = float(data[i])
-		line = line + (" "+ str(i)+":"+str(data[i]))
+    y_train.append(int(response))
+    mine = [None] * 968    
+    line = ""
+    for i in range(0,968):
+    	if data[i] == '' or data[i] == '0':	##assign all the features without any values with 0 value
+    		data[i] = '0'
+    	mine[i] = float(data[i])
+    	line = line + (" "+ str(i)+":"+str(data[i]))
 
-	line = line + "\n"
+    line = line + "\n"
 
-	if line == "\n":
-		line = ""
-		break
-	x_train.append(mine)        
-    
+    if line == "\n":
+    	line = ""
+    	break
+    x_train.append(mine)        
 
-	g.write(line)
-	count += 1
 
-print "written insvmLight and populated in x_train and y_train... \n "
+    g.write(line)
+    count += 1
+    print ("Lines written: " + str(count))
+
+print "written in svmLight and populated in x_train and y_train... \n "
 
 ####################################
 print "IPCA starting... \n "
@@ -78,7 +79,7 @@ for i in range(0,1183747): # originally, 1183747 (for complete dataset)
 
     for j in range(0,100):
         t_line = t_line + " "+ str(j) + ":" + str(reduced[i][j])
-    
+
     line = line + t_line + "\n"
     XXX.write(line)
 ##############################################################
