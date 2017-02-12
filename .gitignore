@@ -3,6 +3,7 @@ IPCA/*.csv
 IPCA/*.txt
 Dataset/*.csv
 Dataset/*.zip
+Dataset/*.txt
 
 # Ignore system/application files/folders
 .DS_Store
