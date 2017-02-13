@@ -40,11 +40,11 @@ for i in f:
     y_train.append(int(response))
     mine = [None] * 968    
     line = ""
-    for i in range(0,968):
-    	if data[i] == '' or data[i] == '0':	##assign all the features without any values with 0 value
-    		data[i] = '0'
-    	mine[i] = float(data[i])
-    	line = line + (" "+ str(i)+":"+str(data[i]))
+    for column in range(0,968):
+    	if data[column] == '' or data[column] == '0':	##assign all the features without any values with 0 value
+    		data[column] = '0'
+    	mine[column] = float(data[column])
+    	line = line + (" "+ str(column)+":"+str(data[column]))
 
     line = line + "\n"
 
