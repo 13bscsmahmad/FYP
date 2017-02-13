@@ -1,6 +1,7 @@
 # Ignore all CSV & .txt files (dataset)
 IPCA/*.csv
 IPCA/*.txt
+IPCA/*.zip
 Dataset/*.csv
 Dataset/*.zip
 Dataset/*.txt
