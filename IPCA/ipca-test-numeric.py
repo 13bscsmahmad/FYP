@@ -70,7 +70,7 @@ print "IPCA finished... \n "
 print "storing in libSVM format... \n "
 XXX = open(filePCA_LIBSVM_path,"w")  
 
-for i in range(0,1183749): # samples in test file
+for i in range(0,1183748): # samples in test file
     line = "" 
     t_line = ""
 
