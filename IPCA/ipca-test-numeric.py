@@ -5,9 +5,9 @@ init = 0 # variable, used to control inner loop
 final = 100000 # variable, used to control inner loop
 
 
-fileOriginal_path = "../Dataset/train_numeric.csv"
-fileLIBSVM_path = "../Dataset/train_numeric_svmLight.txt"
-filePCA_LIBSVM_path = "train_svmLightPCA_train_numeric.txt"
+fileOriginal_path = "../Dataset/test_numeric.csv"
+fileLIBSVM_path = "../Dataset/test_numeric_svmLight.txt"
+filePCA_LIBSVM_path = "test_svmLightPCA_test_numeric.txt"
 
 print "initializing..."
 
@@ -72,7 +72,7 @@ print "IPCA finished... \n "
 print "storing in libSVM format... \n "
 XXX = open(filePCA_LIBSVM_path,"w")  
 
-for i in range(0,1183747): # originally, 1183747 (for complete dataset)
+for i in range(0,1183748):
     line = ""
     line = line #+ str(y_train[i])
     t_line = ""
