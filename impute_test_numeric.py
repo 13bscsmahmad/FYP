@@ -2,13 +2,13 @@
 
 This script imputes (replaces) missing values with "0".
 
-Input: .csv file with missing values
-Output: .csv file with missing values replaced with "0"
+Input: .csv file with missing values from Dataset/ dir
+Output: .csv file with missing values replaced with "0" in Dataset/ dir
 
 """
 
 def checkMissing():
-	test_numeric_imputed = open("test_numeric_imputed.csv", "r")
+	test_numeric_imputed = open("Dataset/test_numeric_imputed.csv", "r")
 	rowNumber = 0
 
 	for line in test_numeric_imputed:
@@ -27,13 +27,17 @@ def checkMissing():
 	
 	
 	
+import os.path
 
-test_numeric = open("test_numeric.csv", "r")
-test_numeric_imputed = open("test_numeric_imputed.csv", "w")
+test_numeric = open(os.path.join("Dataset","test_numeric.csv"), "r")
+test_numeric_imputed = open(os.path.join("Dataset", "test_numeric_imputed.csv"), "w")
 
 
 numberOfMissingVals = 0
 rows = 0
+
+headerRow = test_numeric.readline() # read header row
+rows+=1
 
 for line in test_numeric:
 	line_tokens = line.strip().split(",")
