@@ -30,7 +30,7 @@ for i in f:
     	skip = 0
     	continue
 
-    data = ['none'] * 968 ##the training file contains 970 values in each line, 2 are removed in data, the id and the response
+    data = [None] * 968 ##the training file contains 970 values in each line, 2 are removed in data, the id and the response
 
     x = i.split(",")
     response = x[969].strip()
