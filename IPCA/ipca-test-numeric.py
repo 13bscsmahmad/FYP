@@ -7,6 +7,8 @@ print "initializing..."
 
 f = open(fileOriginal_path,"r") ##original file
 #g = open(fileLIBSVM_path,"w") ##same data in svmLight format 
+print "written in svmLight and populated in x_train and y_train... \n "
+
 
 x_train=[] 
 y_train=[]
@@ -25,7 +27,8 @@ for i in f:
 
     data = [None] * 968 ##the test file contains 969 values in each line, 1 is removed in data, the id
 
-    x = i.split(",")
+    x = i.strip().split(",")
+    
 
     for j in range(1,969):
     	data[j-1] = x[j]
@@ -34,7 +37,7 @@ for i in f:
 
     line = ""
 
-    for column in range(0,967):
+    for column in range(0,968):
     	if data[column] == '':	##assign all the features without any values with 0 value
     		data[column] = '0'
     	mine[column] = float(data[column])
@@ -49,11 +52,12 @@ for i in f:
     x_train.append(mine)        
 
 
+    
+
     #g.write(line)
     count += 1
     print ("Lines written: " + str(count))
 
-print "written in svmLight and populated in x_train and y_train... \n "
 
 ####################################
 print "IPCA starting... \n "
@@ -66,7 +70,7 @@ print "IPCA finished... \n "
 print "storing in libSVM format... \n "
 XXX = open(filePCA_LIBSVM_path,"w")  
 
-for i in range(0,1183748): # samples in test file
+for i in range(0,1183749): # samples in test file
     line = "" 
     t_line = ""
 
