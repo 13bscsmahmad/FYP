@@ -52,6 +52,10 @@ for line in originalFile:
     ####################################################################################################################
 
     lineNumber+=1
+    
+    del PCATokenListWithSerialNumber[:]
+    del CATokenListWithoutSerialNumber[:]
+    del tempTokens[:]
 
 PCAfile.close()
 originalFile.close()
