@@ -54,7 +54,7 @@ for line in originalFile:
     lineNumber+=1
     
     del PCATokenListWithSerialNumber[:]
-    del CATokenListWithoutSerialNumber[:]
+    del PCATokenListWithoutSerialNumber[:]
     del tempTokens[:]
 
 PCAfile.close()
