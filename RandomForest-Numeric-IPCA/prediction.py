@@ -15,7 +15,7 @@ import numpy as np
 
 clf = joblib.load('randomforest.pkl')
 
-originalFile = open("../Dataset/test_numeric_imputed.csv", "r") # to get ID number of component
+originalFile = open("../Dataset/test_numeric.csv", "r") # to get ID number of component
 PCAfile = open("../IPCA/test_svmLightPCA_test_numeric.txt", "r") # to get feature values
 newFile = open("test_numeric_prediction_PCA.txt", "w") # submission file
 
