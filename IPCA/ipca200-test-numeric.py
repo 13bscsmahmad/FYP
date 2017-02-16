@@ -1,7 +1,7 @@
 import os
 
 fileOriginal_path = "../Dataset/test_numeric.csv"
-filePCA_LIBSVM_path = "../Dataset/test_svmLightPCA_test_numeric.txt"
+filePCA_LIBSVM_path = "test_svmLightPCA200_test_numeric.txt"
 
 print "initializing..."
 
