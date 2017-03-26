@@ -13,8 +13,8 @@ dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",", skip_h
 # X = dataset[:,0:8]
 # Y = dataset[:,8]
 
-X = dataset[:,1:969]
-Y = dataset[:,970]
+X = dataset[:,1:968]
+Y = dataset[:,969]
 
 # split data into train and test sets
 seed = 7
