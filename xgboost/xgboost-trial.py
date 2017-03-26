@@ -22,7 +22,7 @@ test_size = 0.33
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=seed)
 
 # fit model to training data
-model = xgboost.XGBClassifier()
+model = xgboost.XGBClassifier(silent=False)
 model.fit(X_train, y_train)
 
 print(model)
