@@ -36,6 +36,6 @@ accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
 #save the model
-save_model("xgboost_numeric_train_001")
+model.save_model("xgboost_numeric_train_001")
 print("Saved model.")
 
