@@ -3,6 +3,7 @@ import xgboost
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+import pickle
 
 # load data
 # dataset = numpy.loadtxt('pima-indians-diabetes.csv', delimiter=",")
@@ -29,13 +30,13 @@ print(model)
 
 # make predictions for test data
 y_pred = model.predict(X_test)
-predictions = [round(value) for value in y_pred]
+predictions = [int(round(value)) for value in y_pred]
 
 # evaluate predictions
 accuracy = accuracy_score(y_test, predictions)
 print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
 #save the model
-model.save_model("xgboost_numeric_train_001")
+pickle.dump(model, open("xgboost_numeric_train_001-default", "wb"))
 print("Saved model.")
 
