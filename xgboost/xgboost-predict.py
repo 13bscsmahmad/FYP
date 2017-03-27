@@ -48,7 +48,6 @@ print "Save successful"
 # evaluate predictions
 #accuracy = accuracy_score(y_test, predictions)
 #print("Accuracy: %.2f%%" % (accuracy * 100.0))
------------------
 
 
 # load data
