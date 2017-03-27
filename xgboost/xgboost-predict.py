@@ -36,7 +36,8 @@ The IDs are all stored in a single row. [1,2,4,7].
 We will convert them into multiple rows [[1],[2],[4],[7]]
 '''
 IDs_in_height = numpy.array(IDs)[numpy.newaxis].T
-finalMatrix = numpy.hstack((IDs_in_height, predictions)) # stack IDs and predictions horizontally
+predictions_in_height = numpy.array(predictions)[numpy.newaxis].T
+finalMatrix = numpy.hstack((IDs_in_height, predictions_in_height)) # stack IDs and predictions horizontally
 
 finalArray = numpy.asarray(finalMatrix) # convert numpy matrix to regular array
 
