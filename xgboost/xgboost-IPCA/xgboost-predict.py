@@ -5,19 +5,13 @@ import xgboost
 import pickle
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
-from sklearn.datasets import load_svmlight_file
-
 # load data
 #dataset = loadtxt('pima-indians-diabetes.csv', delimiter=",")
 
 dataset = numpy.genfromtxt('../Dataset/test_numeric.csv', delimiter=",", skip_header=1)
 
 IDs = dataset[:,0] # store all component IDs
-
-#testset = dataset[:,1:968] # test values
-testset = load_svmlight_file("../../IPCA/test_svmLightPCA_test_numeric.txt")
-
-
+testset = dataset[:,1:968] # test values
  
 # # split data into train and test sets
 # seed = 7

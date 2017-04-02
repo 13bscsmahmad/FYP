@@ -1,6 +1,8 @@
 '''
-This script uses the dataset train_numeric's IPCA version with 100 features.
-It trains the COMPLETE train_numeric IPCA(100) dataset through the xgboost algorithm,
+This script uses the dataset train_numeric.
+Unlike the other script,
+this does NOT split the data into 70:30 train:test.
+It trains the COMPLETE train_numeric dataset through the xgboost algorithm,
 and saves the model.
 
 '''
@@ -11,20 +13,18 @@ from sklearn import model_selection
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import pickle
-from sklearn.datasets import load_svmlight_file
 
 # load data
 # dataset = numpy.loadtxt('pima-indians-diabetes.csv', delimiter=",")
 
-#dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",", skip_header=1)
-X, Y = load_svmlight_file("../../IPCA/finalPCACompleteTrainNumeric.txt")
+dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",", skip_header=1)
 
 # split data into X and y
 # X = dataset[:,0:8]
 # Y = dataset[:,8]
 
-# X = dataset[:,1:968]
-# Y = dataset[:,969]
+X = dataset[:,1:968]
+Y = dataset[:,969]
 
 # # split data into train and test sets
 # seed = 7
