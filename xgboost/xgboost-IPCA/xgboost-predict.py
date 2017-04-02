@@ -8,10 +8,12 @@ from sklearn.metrics import accuracy_score
 # load data
 #dataset = loadtxt('pima-indians-diabetes.csv', delimiter=",")
 
-dataset = numpy.genfromtxt('../Dataset/test_numeric.csv', delimiter=",", skip_header=1)
+dataset = numpy.genfromtxt('../Dataset/test_numeric.csv', delimiter=",", skip_header=1) # only using to retrieve IDs. TODO: Get IDs from original submission.csv for lower mem. footprint.
 
 IDs = dataset[:,0] # store all component IDs
-testset = dataset[:,1:968] # test values
+
+testset = numpy.genfromtxt('../Dataset/test_numeric.csv', delimiter=",")
+test_set = testset[:,0:99] # test values
  
 # # split data into train and test sets
 # seed = 7
@@ -26,9 +28,9 @@ testset = dataset[:,1:968] # test values
 # some time later...
 
 # load model from file
-loaded_model = pickle.load(open("xgboost_numeric_train_001-default", "rb"))
+loaded_model = pickle.load(open("xgboost_complete_numeric_train_PC-100_001-default", "rb"))
 # make predictions for test data
-y_pred = loaded_model.predict(testset)
+y_pred = loaded_model.predict(test_set)
 predictions = [int(round(value)) for value in y_pred]
 
 '''
