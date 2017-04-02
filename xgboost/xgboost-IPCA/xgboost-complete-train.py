@@ -1,7 +1,5 @@
 '''
-This script uses the dataset train_numeric.
-Unlike the other script,
-this does NOT split the data into 70:30 train:test.
+This script uses the dataset train_numeric_PCA-100 (the training set PCA'd to 100 components).
 It trains the COMPLETE train_numeric dataset through the xgboost algorithm,
 and saves the model.
 
@@ -17,14 +15,15 @@ import pickle
 # load data
 # dataset = numpy.loadtxt('pima-indians-diabetes.csv', delimiter=",")
 
-dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",", skip_header=1)
+#dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",", skip_header=1)
+dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",")
 
 # split data into X and y
 # X = dataset[:,0:8]
 # Y = dataset[:,8]
 
-X = dataset[:,1:968]
-Y = dataset[:,969]
+X = dataset[:,0:99]
+Y = dataset[:,100]
 
 # # split data into train and test sets
 # seed = 7
@@ -46,6 +45,6 @@ print(model)
 # print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
 #save the model
-pickle.dump(model, open("xgboost_complete_numeric_train_002-default", "wb"))
+pickle.dump(model, open("xgboost_complete_numeric_train_PC-100_001-default", "wb"))
 print("Saved model.")
 
