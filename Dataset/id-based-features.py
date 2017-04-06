@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import xgboost as xgb
 
-DATA_DIR = "../input"
+#DATA_DIR = "../input"
 
 ID_COLUMN = 'Id'
 TARGET_COLUMN = 'Response'
@@ -15,11 +15,11 @@ SEED = 0
 CHUNKSIZE = 50000
 NROWS = 250000
 
-TRAIN_NUMERIC = "{0}/train_numeric.csv".format(DATA_DIR)
-TRAIN_DATE = "{0}/train_date.csv".format(DATA_DIR)
+TRAIN_NUMERIC = "train_numeric.csv"
+TRAIN_DATE = "train_date.csv"
 
-TEST_NUMERIC = "{0}/test_numeric.csv".format(DATA_DIR)
-TEST_DATE = "{0}/test_date.csv".format(DATA_DIR)
+TEST_NUMERIC = "test_numeric.csv"
+TEST_DATE = "test_date.csv"
 
 FILENAME = "etimelhoods"
 
@@ -31,7 +31,7 @@ test["StartTime"] = -1
 
 
 nrows = 0
-for tr, te in zip(pd.read_csv(TRAIN_DATE''', chunksize=CHUNKSIZE'''), pd.read_csv(TEST_DATE''', chunksize=CHUNKSIZE''')):
+for tr, te in zip(pd.read_csv(TRAIN_DATE), pd.read_csv(TEST_DATE)):
     feats = np.setdiff1d(tr.columns, [ID_COLUMN])
 
     stime_tr = tr[feats].min(axis=1).values
