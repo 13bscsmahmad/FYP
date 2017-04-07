@@ -13,7 +13,7 @@ TARGET_COLUMN = 'Response'
 
 SEED = 0
 CHUNKSIZE = 50000
-NROWS = 250000
+NROWS = 1183747 #250000
 
 TRAIN_NUMERIC = "train_numeric.csv"
 TRAIN_DATE = "train_date.csv"
