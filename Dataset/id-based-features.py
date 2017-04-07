@@ -49,6 +49,7 @@ for tr, te in zip(pd.read_csv(TRAIN_DATE), pd.read_csv(TEST_DATE)):
 
 
 ntrain = train.shape[0]
+print("ntrain: {0}").format(ntrain)
 train_test = pd.concat((train, test)).reset_index(drop=True).reset_index(drop=False)
 
 train_test['0_¯\_(ツ)_/¯_1'] = train_test[ID_COLUMN].diff().fillna(9999999).astype(int)
