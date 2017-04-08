@@ -1,7 +1,7 @@
 # Train XGBoost model, save to file using pickle, load and make predictions
 import numpy
 from numpy import loadtxt
-import xgboost
+import xgboost as xgb
 import pickle
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
@@ -29,9 +29,14 @@ testset = dataset[:,1:5] # test values
 # some time later...
 
 # load model from file
-loaded_model = pickle.load(open(MODEL_NAME, "rb"))
+bst = xgb.Booster({'nthread':4}) #init model
+bst.load_model("xgboost-features-engineered-faron-model") # load data
+
+#Data to test in DMatrix form
+dtest = xgb.DMatrix(testset)
+
 # make predictions for test data
-y_pred = loaded_model.predict(testset)
+y_pred = bst.predict(dtest)
 predictions = [int(round(value)) for value in y_pred]
 
 '''
