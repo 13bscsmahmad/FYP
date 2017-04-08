@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-@author: Faron
-"""
+
 import pandas as pd
 import numpy as np
 import xgboost as xgb
+import pickle
 
 DATA_DIR = "../../Dataset"
 
@@ -84,8 +83,7 @@ xgb_params = {
     'num_parallel_tree': 1,
     'min_child_weight': 2,
     'eval_metric': 'auc',
-    'base_score': prior,
-    'save_model': 'xgboost-feature-engg-model'
+    'base_score': prior
 }
 
 
@@ -100,3 +98,14 @@ print('CV-Mean: {0}+{1}'.format(cv_mean, cv_std))
 
 print("res:")
 print(res)
+
+print ("training data...")
+
+#Train the model
+trained_model = xgboost.train(xgb_params, dtrain, verbose_eval=True)
+
+#Save the model
+pickle.dump(model, open("xgboost-features-engineered-faron-model", "wb"))
+print("Saved model.")
+
+
