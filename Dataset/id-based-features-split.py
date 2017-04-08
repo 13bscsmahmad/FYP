@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-@author: Faron
-"""
+'''
+Input: This script takes a csv file which contains id, response, start_time, feature1, feature2, feature3, and feature4
+created by the script "id-based-features.py".
+
+Processing: Splits the input into separate train and test files.
+
+Output: train file which contains id, response, start_time, feature1, feature2, feature3, feature4
+        test file which containts id, start_time, feature1, feature2, feature3, feature4
+'''
 import pandas as pd
 import numpy as np
 import xgboost as xgb
