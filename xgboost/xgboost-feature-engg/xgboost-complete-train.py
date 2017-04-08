@@ -102,7 +102,7 @@ print(res)
 print ("training data...")
 
 #Train the model
-trained_model = xgboost.train(xgb_params, dtrain, verbose_eval=True)
+trained_model = xgb.train(xgb_params, dtrain, verbose_eval=True)
 
 #Save the model
 pickle.dump(model, open("xgboost-features-engineered-faron-model", "wb"))
