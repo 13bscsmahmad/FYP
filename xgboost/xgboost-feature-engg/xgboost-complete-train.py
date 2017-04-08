@@ -111,7 +111,8 @@ print ("training data...")
 trained_model = xgb.train(xgb_params, dtrain, verbose_eval=True)
 
 #Save the model
-pickle.dump(trained_model, open("xgboost-features-engineered-faron-model", "wb"))
+trained_model.save_model("xgboost-features-engineered-faron-model")
+
 print("Saved model.")
 
 
