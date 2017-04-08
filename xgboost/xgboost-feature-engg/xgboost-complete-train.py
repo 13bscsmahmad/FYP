@@ -88,16 +88,22 @@ xgb_params = {
 
 
 dtrain = xgb.DMatrix(train, label=y)
-res = xgb.cv(xgb_params, dtrain, num_boost_round=10, nfold=4, seed=0, stratified=True,
-             early_stopping_rounds=1, verbose_eval=1, show_stdv=True)
 
-cv_mean = res.iloc[-1, 0]
-cv_std = res.iloc[-1, 1]
+'''perform cross validation to see the performance of the xgb_params selected.
+Currently, the evaluation metric is AUC
+CAN BE COMMENTED OUT ONCE
+PERFORMANCE SEEMS REASONABLE.
+'''
 
-print('CV-Mean: {0}+{1}'.format(cv_mean, cv_std))
-
-print("res:")
-print(res)
+# res = xgb.cv(xgb_params, dtrain, num_boost_round=10, nfold=4, seed=0, stratified=True, early_stopping_rounds=1, verbose_eval=1, show_stdv=True)
+#
+# cv_mean = res.iloc[-1, 0]
+# cv_std = res.iloc[-1, 1]
+#
+# print('CV-Mean: {0}+{1}'.format(cv_mean, cv_std))
+#
+# print("res:")
+# print(res)
 
 print ("training data...")
 
@@ -105,7 +111,7 @@ print ("training data...")
 trained_model = xgb.train(xgb_params, dtrain, verbose_eval=True)
 
 #Save the model
-pickle.dump(model, open("xgboost-features-engineered-faron-model", "wb"))
+pickle.dump(trained_model, open("xgboost-features-engineered-faron-model", "wb"))
 print("Saved model.")
 
 
