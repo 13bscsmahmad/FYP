@@ -85,6 +85,7 @@ xgb_params = {
     'min_child_weight': 2,
     'eval_metric': 'auc',
     'base_score': prior
+    'save_model': 'xgboost-feature-engg-model'
 }
 
 
