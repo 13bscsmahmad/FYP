@@ -84,7 +84,7 @@ xgb_params = {
     'num_parallel_tree': 1,
     'min_child_weight': 2,
     'eval_metric': 'auc',
-    'base_score': prior
+    'base_score': prior,
     'save_model': 'xgboost-feature-engg-model'
 }
 
