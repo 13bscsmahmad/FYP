@@ -21,7 +21,7 @@ testing_dataset = np.array(testing_dataset)
 
 # load model from file
 bst = xgb.Booster({'nthread':4}) #init model
-bst.load_model("xgboost-features-engineered-faron-model") # load data
+bst.load_model("xgboost-numeric-and-features-engineered-faron-model") # load data
 
 #Data to test in DMatrix form
 dtest = xgb.DMatrix(testing_dataset)
