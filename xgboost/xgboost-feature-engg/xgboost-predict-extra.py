@@ -11,7 +11,7 @@ import xgboost as xgb
 MODEL_NAME = "xgboost-numeric-and-features-engineered-faron-model"
 TEST_DATA = "../../Dataset/id-based-features-test.csv"
 
-testing_data = pd.read_csv(TEST_DATA)
+testing_dataset = pd.read_csv(TEST_DATA)
 
 ids = testing_dataset.Id.ravel()
 testing_dataset.drop('Id', 1) # drop the Id column from the dataframe
