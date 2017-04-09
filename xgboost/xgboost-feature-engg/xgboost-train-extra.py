@@ -20,8 +20,8 @@ ID_BASED_AND_NUMERIC_FEATURES_TRAIN = "../../Dataset/id-based-features-train.csv
 training_dataset = pd.read_csv(ID_BASED_AND_NUMERIC_FEATURES_TRAIN)
 
 # Get labels and ids from the file
-y = train_dataset.Response.ravel()
-ids = train_dataset.Id.ravel()
+y = training_dataset.Response.ravel()
+ids = training_dataset.Id.ravel()
 
 # Drop Id and Response columns from the training dataset
 training_dataset = training_dataset.drop('Id', 1)
