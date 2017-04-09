@@ -28,14 +28,14 @@ dtest = xgb.DMatrix(testing_dataset)
 
 # make predictions for test data
 y_pred = bst.predict(dtest)
-predictions = [int(round(value)) for value in y_pred]
+#predictions = [int(round(value)) for value in y_pred]
 
 '''
 The IDs are all stored in a single row. [1,2,4,7]. 
 We will convert them into multiple rows [[1],[2],[4],[7]]
 '''
 IDs_in_height = np.array(ids)[np.newaxis].T
-predictions_in_height = np.array(predictions)[np.newaxis].T
+predictions_in_height = np.array(y_pred)[np.newaxis].T
 finalMatrix = np.hstack((IDs_in_height, predictions_in_height)) # stack IDs and predictions horizontally
 
 finalArray = np.asarray(finalMatrix) # convert numpy matrix to regular array
