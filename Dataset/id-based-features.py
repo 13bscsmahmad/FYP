@@ -25,8 +25,12 @@ FILENAME = "etimelhoods"
 
 # train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN], nrows=NROWS)
 # test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN], nrows=NROWS)
-train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN])
-test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN])
+
+# train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN])
+# test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN])
+
+train = pd.read_csv(TRAIN_NUMERIC)
+test = pd.read_csv(TEST_NUMERIC)
 
 
 train["StartTime"] = -1
