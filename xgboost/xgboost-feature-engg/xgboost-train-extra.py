@@ -1,0 +1,59 @@
+'''
+This script will read the split files id-based-features-train.csv and
+id-based-features-test.csv
+
+The features in the training file include all the numeric features + 5 of Faron's engineered features.
+
+It will then train an xgboost model.
+
+'''
+
+import pandas as pd
+import numpy as np
+import xgboost as xgb
+
+DATA_DIR = "../../Dataset"
+
+ID_BASED_AND_NUMERIC_FEATURES_TRAIN = "id-based-features-train.csv".format(DATA_DIR)
+
+# Read train dataset
+training_dataset = pd.read_csv(ID_BASED_AND_NUMERIC_FEATURES_TRAIN)
+
+# Get labels and ids from the file
+y = train_dataset.Response.ravel()
+ids = train_dataset.Id.ravel()
+
+# Drop Id and Response columns from the training dataset
+training_dataset = training_dataset.drop('Id', 1)
+training_dataset = training_dataset.drop('Response', 1)
+
+# Convert training_dataset to numpy array
+training_dataaset = np.array(training_dataset)
+
+prior = np.sum(y) / (1.*len(y))
+
+xgb_params = {
+    'seed': 0,
+    'colsample_bytree': 0.7,
+    'silent': 1,
+    'subsample': 0.7,
+    'learning_rate': 0.1,
+    'objective': 'binary:logistic',
+    'max_depth': 4,
+    'num_parallel_tree': 1,
+    'min_child_weight': 2,
+    'eval_metric': 'auc',
+    'base_score': prior
+}
+
+dtrain = xgb.DMatrix(training_dataset, label=y)
+
+print ("training data...")
+
+#Train the model
+trained_model = xgb.train(xgb_params, dtrain, verbose_eval=True)
+
+#Save the model
+trained_model.save_model("xgboost-numeric-and-features-engineered-faron-model")
+
+print("Saved model.")
