@@ -23,8 +23,8 @@ import xgboost as xgb
 
 # SOURCE_FILENAME="id-based-features.csv"
 SOURCE_FILENAME="id-based-features-and-numeric-features.csv"
-DESTINATION_FILENAME_TRAIN="id-based-features-train.csv"
-DESTINATION_FILENAME_TEST="id-based-features-test.csv"
+DESTINATION_FILENAME_TRAIN="id-based-features-and-numeric-train.csv"
+DESTINATION_FILENAME_TEST="id-based-features-and-numeric-test.csv"
 
 # train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN], nrows=NROWS)
 # test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN], nrows=NROWS)
