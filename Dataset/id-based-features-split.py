@@ -21,7 +21,8 @@ import xgboost as xgb
 # CHUNKSIZE = 50000
 # NROWS = 250000
 
-SOURCE_FILENAME="id-based-features.csv"
+# SOURCE_FILENAME="id-based-features.csv"
+SOURCE_FILENAME="id-based-features-and-numeric-features.csv"
 DESTINATION_FILENAME_TRAIN="id-based-features-train.csv"
 DESTINATION_FILENAME_TEST="id-based-features-test.csv"
 

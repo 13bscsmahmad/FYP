@@ -65,7 +65,7 @@ train_test['0_¯\_(ツ)_/¯_3'] = train_test[ID_COLUMN].diff().fillna(9999999).a
 train_test['0_¯\_(ツ)_/¯_4'] = train_test[ID_COLUMN].iloc[::-1].diff().fillna(9999999).astype(int)
 
 train_test = train_test.sort_values(by=['index']).drop(['index'], axis=1)
-train_test.to_csv("id-based-features.csv")
+train_test.to_csv("id-based-features-and-numeric-features.csv")
 
 # train = train_test.iloc[:ntrain, :]
 #
