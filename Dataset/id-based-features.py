@@ -2,6 +2,15 @@
 """
 @author: Faron
 """
+
+'''
+Input: This script requires train_numeric, test_numeric, train_date, test_date.
+
+Processing: Calculates 5 additional "magic"/Faron's features/
+
+Output: Output file contains train and test numeric stacked vertically, respectively (test numeric has response NULL).
+        The column orders are: Id, numeric features, response, magic features.
+'''
 import pandas as pd
 import numpy as np
 import xgboost as xgb

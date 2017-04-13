@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 '''
-Input: This script takes a csv file which contains id, response, start_time, feature1, feature2, feature3, and feature4
+Input: This script takes a csv file which contains id, response, all numeric features, start_time, feature1, feature2, feature3, and feature4
 created by the script "id-based-features.py".
 
 Processing: Splits the input into separate train and test files.
 
-Output: train file which contains id, response, start_time, feature1, feature2, feature3, feature4
-        test file which containts id, start_time, feature1, feature2, feature3, feature4
+Output: train file which contains id, response, start_time, numeric features, feature1, feature2, feature3, feature4
+        test file which containts id, numeric features, start_time, feature1, feature2, feature3, feature4
 '''
 import pandas as pd
 import numpy as np
@@ -37,8 +37,18 @@ print dataset
 #get train_dataset
 train_dataset = dataset.loc[pd.notnull(dataset['Response'])] # all those columns where Response!=NaN
 train_dataset.Response = train_dataset.Response.astype(int) # convert Response to int (originally, float)
+
+# Store Ids and Response
+idr = train_dataset[['Id','Response']]
+# Drop Ids and Response from train_dataset
+train_d2 = train_dataset.drop(['Id', 'Response'], axis=1)
+# Concatenate the 2 dataframes so that the final dataframe has Id, Response, features
+train_d3 = pd.concat([idr, train_d2], axis=1)
+
+# Save the final dataframe
 print ("train_dataset saving...")
 train_dataset.to_csv(DESTINATION_FILENAME_TRAIN, index=False)
+print ("train_dataset saved!")
 
 
 #get test_dataset
@@ -46,3 +56,4 @@ test_dataset = dataset.loc[pd.isnull(dataset['Response'])] # all those columns w
 test_dataset = test_dataset.drop('Response', 1) # drop Response column
 print ("test_dataset saving...")
 test_dataset.to_csv(DESTINATION_FILENAME_TEST, index=False)
+print ("test_dataset saved!")
