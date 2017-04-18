@@ -45,6 +45,6 @@ print ("training data...")
 trained_model = xgb.train(dtrain=dtrain, verbose_eval=True)
 
 #Save the model
-trained_model.save_model("xgboost-numeric-and-features-engineered-faron-model")
+trained_model.save_model("xgboost-numeric-pandas")
 
 print("Saved model.")
