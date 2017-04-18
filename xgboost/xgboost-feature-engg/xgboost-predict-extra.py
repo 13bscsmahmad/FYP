@@ -17,7 +17,7 @@ print(testing_dataset.shape)
 
 print("Removing Id column...")
 ids = testing_dataset.Id.ravel()
-testing_dataset.drop('Id', 1) # drop the Id column from the dataframe
+testing_dataset = testing_dataset.drop('Id', 1) # drop the Id column from the dataframe
 
 ## Convert training_dataset to numpy array
 testing_dataset = np.array(testing_dataset)
