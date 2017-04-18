@@ -28,7 +28,11 @@ training_dataset = training_dataset.drop('Id', 1)
 training_dataset = training_dataset.drop('Response', 1)
 
 # Convert training_dataset to numpy array
-training_dataaset = np.array(training_dataset)
+training_dataset = np.array(training_dataset)
+
+#print shape of training_dataset
+print("training_dataset shape: ")
+print(training_dataset.shape)
 
 prior = np.sum(y) / (1.*len(y))
 
