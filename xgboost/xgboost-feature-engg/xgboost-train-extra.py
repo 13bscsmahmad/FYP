@@ -34,30 +34,41 @@ training_dataset = np.array(training_dataset)
 print("training_dataset shape: ")
 print(training_dataset.shape)
 
-prior = np.sum(y) / (1.*len(y))
-
-xgb_params = {
-    'seed': 0,
-    'colsample_bytree': 0.7,
-    'silent': 1,
-    'subsample': 0.7,
-    'learning_rate': 0.1,
-    'objective': 'binary:logistic',
-    'max_depth': 4,
-    'num_parallel_tree': 1,
-    'min_child_weight': 2,
-    'eval_metric': 'auc',
-    'base_score': prior
-}
-
-dtrain = xgb.DMatrix(training_dataset, label=y)
-
-print ("training data...")
-
-#Train the model
-trained_model = xgb.train(xgb_params, dtrain, verbose_eval=True)
+model = xgboost.XGBClassifier(silent=False)
+print("training...")
+model.fit(training_dataset, y)
+print("training successful. Model details:")
+print(model)
 
 #Save the model
-trained_model.save_model("xgboost-numeric-and-features-engineered-faron-model")
+model.save_model("xgboost-numeric-and-features-engineered-faron-model")
+print("Saved model successfully.")
 
-print("Saved model.")
+
+# prior = np.sum(y) / (1.*len(y))
+#
+# xgb_params = {
+#     'seed': 0,
+#     'colsample_bytree': 0.7,
+#     'silent': 1,
+#     'subsample': 0.7,
+#     'learning_rate': 0.1,
+#     'objective': 'binary:logistic',
+#     'max_depth': 4,
+#     'num_parallel_tree': 1,
+#     'min_child_weight': 2,
+#     'eval_metric': 'auc',
+#     'base_score': prior
+# }
+#
+# dtrain = xgb.DMatrix(training_dataset, label=y)
+#
+# print ("training data...")
+#
+# #Train the model
+# trained_model = xgb.train(xgb_params, dtrain, verbose_eval=True)
+#
+# #Save the model
+# trained_model.save_model("xgboost-numeric-and-features-engineered-faron-model")
+#
+# print("Saved model.")
