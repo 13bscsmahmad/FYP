@@ -34,7 +34,7 @@ training_dataset = np.array(training_dataset)
 print("training_dataset shape: ")
 print(training_dataset.shape)
 
-model = xgboost.XGBClassifier(silent=False)
+model = xgb.XGBClassifier(silent=False)
 print("training...")
 model.fit(training_dataset, y)
 print("training successful. Model details:")
