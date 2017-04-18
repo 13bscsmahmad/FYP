@@ -14,7 +14,7 @@ import xgboost as xgb
 
 DATA_DIR = "../../Dataset"
 
-ID_BASED_AND_NUMERIC_FEATURES_TRAIN = "../../Dataset/id-based-features-train.csv"
+ID_BASED_AND_NUMERIC_FEATURES_TRAIN = "../../Dataset/id-based-features-and-numeric-train.csv"
 
 # Read train dataset
 training_dataset = pd.read_csv(ID_BASED_AND_NUMERIC_FEATURES_TRAIN)
