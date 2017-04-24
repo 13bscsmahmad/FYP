@@ -21,7 +21,7 @@ feats = np.setdiff1d(list(test.columns), ['Id'])
 X_test = np.array(test[feats])
 
 prior = np.sum(y_train) / (1.*len(y_train))
-model = XGBClassifier(seed=0, colsample_bytree=0.7, silent=1, subsample=0.1, learning_rate=0.1, objective='binary:logistic', max_depth=4, num_parallel_tree=1, min_child_weight=2, base_score=prior)
+model = XGBClassifier(seed=0, colsample_bytree=0.7, silent=1, subsample=0.1, learning_rate=0.1, objective='binary:logistic', max_depth=4, min_child_weight=2, base_score=prior)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
