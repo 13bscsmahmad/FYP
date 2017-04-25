@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-train = pd.read_csv("/home/g13bscsmshahbal/scripts/balanced_train_joined.csv") #load dataframe train
+train = pd.read_csv("/home/g13bscsmshahbal/scripts/50_balanced_train_joined.csv") #load dataframe train
 train.fillna(0, inplace=True)
 
 feats = np.setdiff1d(list(train.columns), ['Id','Response'])
@@ -33,5 +33,5 @@ pred = pd.DataFrame({'Id': IDS,
 pred = pred.set_index('Id')
 
 
-pred.to_csv("pred_xgb_setparams.csv")
+pred.to_csv("pred_50_balanced_train_joined.csv")
 
