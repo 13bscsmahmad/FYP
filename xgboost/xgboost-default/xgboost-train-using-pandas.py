@@ -44,7 +44,7 @@ dtrain = xgb.DMatrix(dataset, label=y)
 print ("training data...")
 
 #Train the model
-trained_model = xgb.train(dtrain=dtrain, label=y, verbose_eval=True)
+trained_model = xgb.train(dtrain=dtrain, params=None, verbose_eval=True)
 
 #Save the model
 trained_model.save_model("xgboost-numeric-pandas")
