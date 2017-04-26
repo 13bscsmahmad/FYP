@@ -43,8 +43,29 @@ print(dataset.shape)
 dtrain = xgb.DMatrix(dataset, label=y)
 print ("training data...")
 
+xgb_params = {
+    'max_depth':3,
+    'learning_rate':0.1,
+    'n_estimators':100,
+    'silent':True,
+    'objective':'binary:logistic',
+    'nthread':-1,
+    'gamma':0,
+    'min_child_weight':1,
+    'max_delta_step':0,
+    'subsample':1,
+    'colsample_bytree':1,
+    'colsample_bylevel':1,
+    'reg_alpha':0,
+    'reg_lambda':1,
+    'scale_pos_weight':1,
+    'base_score':0.5,
+    'seed':0,
+    'missing':None
+}
+
 #Train the model
-trained_model = xgb.train(dtrain=dtrain, params=None, verbose_eval=True)
+trained_model = xgb.train(dtrain=dtrain, params=xgb_params, verbose_eval=True)
 
 #Save the model
 trained_model.save_model("xgboost-numeric-pandas")
