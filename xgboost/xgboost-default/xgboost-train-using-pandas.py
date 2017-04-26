@@ -16,7 +16,9 @@ from sklearn.model_selection import train_test_split
 import pickle
 import pandas as pd
 
-TRAIN_DATA = "../../Dataset/id-based-features-and-numeric-train.csv"
+#TRAIN_DATA = "../../Dataset/id-based-features-and-numeric-train.csv"
+TRAIN_DATA = "../../Dataset/numeric_train.csv"
+TEST_DATA = "../../Dataset/numeric_test.csv"
 
 dataset = pd.read_csv(TRAIN_DATA)
 print("dataset shape: ")
@@ -48,3 +50,33 @@ trained_model = xgb.train(dtrain=dtrain, verbose_eval=True)
 trained_model.save_model("xgboost-numeric-pandas")
 
 print("Saved model.")
+
+##########################################################################
+
+print("Loading prediction data...")
+dataset = pd.read_csv(TEST_DATA)
+
+# Get Ids
+ids = dataset.Id.ravel()
+
+# Drop IDs
+dataset = dataset.drop('Id', 1)
+dataset = np.array(dataset)
+dataset = xgb.DMatrix(dataset)
+
+# make predictions for test data
+print("Predicting...")
+y_pred = trained_model.predict(dataset)
+
+pred = pd.DataFrame({'Id': IDS, 'Response': y_pred})
+
+
+pred = pred.set_index('Id')
+
+
+pred.to_csv("pred_train_numeric.csv")
+
+
+
+
+
