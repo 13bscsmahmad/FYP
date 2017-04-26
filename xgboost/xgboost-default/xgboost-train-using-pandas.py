@@ -17,8 +17,8 @@ import pickle
 import pandas as pd
 
 #TRAIN_DATA = "../../Dataset/id-based-features-and-numeric-train.csv"
-TRAIN_DATA = "../../Dataset/numeric_train.csv"
-TEST_DATA = "../../Dataset/numeric_test.csv"
+TRAIN_DATA = "../../Dataset/train_numeric.csv"
+TEST_DATA = "../../Dataset/test_numeric.csv"
 
 dataset = pd.read_csv(TRAIN_DATA)
 print("dataset shape: ")
