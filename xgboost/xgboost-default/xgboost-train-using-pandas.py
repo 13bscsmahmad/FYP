@@ -89,7 +89,7 @@ dataset = xgb.DMatrix(dataset)
 print("Predicting...")
 y_pred = trained_model.predict(dataset)
 
-pred = pd.DataFrame({'Id': IDS, 'Response': y_pred})
+pred = pd.DataFrame({'Id': ids, 'Response': y_pred})
 
 
 pred = pred.set_index('Id')
