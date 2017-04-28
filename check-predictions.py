@@ -31,7 +31,7 @@ print "Checking using pandas..."
 
 import pandas as pd
 
-fi = pd.read_csv(argv[1])
+fi = pd.read_csv(sys.argv[1])
 print "0s in dataset"
 print fi.loc[fi["Response"]==0]
 print "1s in dataset"
