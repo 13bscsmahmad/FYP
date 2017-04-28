@@ -44,7 +44,7 @@ finalMatrix = numpy.hstack((IDs_in_height, predictions_in_height)) # stack IDs a
 
 finalArray = numpy.asarray(finalMatrix) # convert numpy matrix to regular array
 
-numpy.savetxt("submission.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
+numpy.savetxt("submission-default-xgboost.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
 
 print "Save successful"
 
