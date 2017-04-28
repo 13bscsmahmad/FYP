@@ -14,10 +14,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import pickle
 
+TRAIN_DATASET = "../../Dataset/train_numeric.csv"
+MODEL_NAME = "numeric_train_sklearn_xgboost.model"
 # load data
 # dataset = numpy.loadtxt('pima-indians-diabetes.csv', delimiter=",")
 
-dataset = numpy.genfromtxt('../Dataset/train_numeric.csv', delimiter=",", skip_header=1)
+dataset = numpy.genfromtxt(TRAIN_DATASET, delimiter=",", skip_header=1)
 
 # split data into X and y
 # X = dataset[:,0:8]
@@ -46,6 +48,6 @@ print(model)
 # print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
 #save the model
-pickle.dump(model, open("xgboost_complete_numeric_train_002-default", "wb"))
+pickle.dump(model, open(MODEL_NAME, "wb"))
 print("Saved model.")
 

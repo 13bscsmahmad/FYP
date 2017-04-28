@@ -8,7 +8,10 @@ from sklearn.metrics import accuracy_score
 # load data
 #dataset = loadtxt('pima-indians-diabetes.csv', delimiter=",")
 
-dataset = numpy.genfromtxt('../Dataset/test_numeric.csv', delimiter=",", skip_header=1)
+TEST_DATASET = "../../Dataset/test_numeric.csv"
+MODEL_NAME = "numeric_train_sklearn_xgboost.model"
+
+dataset = numpy.genfromtxt(TEST_DATASET, delimiter=",", skip_header=1)
 
 IDs = dataset[:,0] # store all component IDs
 testset = dataset[:,1:968] # test values
@@ -26,7 +29,7 @@ testset = dataset[:,1:968] # test values
 # some time later...
 
 # load model from file
-loaded_model = pickle.load(open("xgboost_numeric_train_001-default", "rb"))
+loaded_model = pickle.load(open(MODEL_NAME, "rb"))
 # make predictions for test data
 y_pred = loaded_model.predict(testset)
 predictions = [int(round(value)) for value in y_pred]
