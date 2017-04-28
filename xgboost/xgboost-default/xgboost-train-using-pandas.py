@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 import xgboost
 from sklearn import model_selection
 from sklearn.metrics import accuracy_score
