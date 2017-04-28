@@ -4,6 +4,7 @@ import sys
 ############
 
 print "checking using simple fopen() function"
+print "======================================\n"
 
 f = open(sys.argv[1], "r")
 count0s = 0
@@ -28,7 +29,7 @@ f.close()
 #############
 
 print "Checking using pandas..."
-
+print "========================\n"
 import pandas as pd
 
 fi = pd.read_csv(sys.argv[1])
