@@ -42,7 +42,7 @@ IDs_in_height = np.array(ids)[np.newaxis].T
 predictions_in_height = np.array(predictions)[np.newaxis].T
 finalMatrix = np.hstack((IDs_in_height, predictions_in_height))
 finalArray = np.asarray(finalMatrix)
-numpy.savetxt("submission-default-xgboost-pandas.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
+np.savetxt("submission-default-xgboost-pandas.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
 print "Save successful"
 
 
