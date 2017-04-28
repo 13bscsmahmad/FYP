@@ -11,7 +11,7 @@ count1s = 0
 lines = 0
 
 for line in f:
-	tokens = lines.strip().split(",")
+	tokens = line.strip().split(",")
 	if tokens[1] == "0":
 		count0s += 1
 	elif tokens[1] == "1":
