@@ -35,7 +35,7 @@ tr = pd.read_csv(TRAIN_DATE)
 te = pd.read_csv(TEST_DATE)
 
 
-for tr, te in zip(pd.read_csv(TRAIN_DATE), pd.read_csv(TEST_DATE):
+for tr, te in zip(pd.read_csv(TRAIN_DATE), pd.read_csv(TEST_DATE)):
     feats = np.setdiff1d(tr.columns, [ID_COLUMN]) # get all features i.e. remove ID for all columns
 
     stime_tr = tr[feats].min(axis=1).values
