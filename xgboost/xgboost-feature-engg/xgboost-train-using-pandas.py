@@ -8,7 +8,7 @@ import pandas as pd
 
 TRAIN_DATASET = "../../Dataset/id-based-features-and-numeric-train.csv"
 TEST_DATASET = "../../Dataset/id-based-features-and-numeric-test.csv"
-MODEL_NAME = "nANDl_sklearn_xgboost_pandas.model"
+MODEL_NAME = "nANDl_sklearn_xgboost_pandas_faron.model"
 
 f = pd.read_csv(TRAIN_DATASET)
 y = f.Response.ravel()
@@ -17,8 +17,9 @@ ids = f.Id.ravel()
 f = f.drop('Id', 1)
 
 f = np.array(f)
+prior = np.sum(y) / (1.*len(y))
 
-model = xgboost.XGBClassifier(silent=False)
+model = xgboost.XGBClassifier(max_depth=4, learning_rate=0.1, n_estimators=100, silent=False, objective='binary:logistic', nthread=-1, gamma=0, min_child_weight=2, max_delta_step=0, subsample=0.7, colsample_bytree=0.7, colsample_bylevel=1, reg_alpha=0, reg_lambda=1, scale_pos_weight=1, base_score=prior, seed=0, missing=None)
 print "training..."
 model.fit(f, y)
 print "training successful."
@@ -42,7 +43,7 @@ IDs_in_height = np.array(ids)[np.newaxis].T
 predictions_in_height = np.array(predictions)[np.newaxis].T
 finalMatrix = np.hstack((IDs_in_height, predictions_in_height))
 finalArray = np.asarray(finalMatrix)
-np.savetxt("submission-default-xgboost-pandas.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
+np.savetxt("submission-faron-xgboost-pandas.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
 print "Save successful"
 
 
