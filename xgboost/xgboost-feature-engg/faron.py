@@ -31,14 +31,18 @@ test["StartTime"] = -1
 
 
 nrows = 0
-for tr, te in zip(pd.read_csv(TRAIN_DATE), pd.read_csv(TEST_DATE):
-    feats = np.setdiff1d(tr.columns, [ID_COLUMN]) # get all features i.e. remove ID for all columns
+tr = pd.read_csv(TRAIN_DATE)
+te = pd.read_csv(TEST_DATE)
 
-    stime_tr = tr[feats].min(axis=1).values
-    stime_te = te[feats].min(axis=1).values
 
-    train.loc[train.Id.isin(tr.Id), 'StartTime'] = stime_tr
-    test.loc[test.Id.isin(te.Id), 'StartTime'] = stime_te
+
+feats = np.setdiff1d(tr.columns, [ID_COLUMN]) # get all features i.e. remove ID for all columns
+
+stime_tr = tr[feats].min(axis=1).values
+stime_te = te[feats].min(axis=1).values
+
+train.loc[train.Id.isin(tr.Id), 'StartTime'] = stime_tr
+test.loc[test.Id.isin(te.Id), 'StartTime'] = stime_te
 
     # nrows += CHUNKSIZE
 #     if nrows >= NROWS:
