@@ -109,9 +109,15 @@ Predict and write to file
 test_data = train_test.iloc[ntrain:, :]
 test_data = np.array(test_data[features])
 dtest = xgb.DMatrix(test_data)
-predictions = booster_model.predict(dtest) # returns numpy array
-np.savetxt("numpy-submission", predictions, fmt='%i')
-result = pd.DataFrame(data=predictions, index=test.index, columns={'Response'})
-result = pd.concat([id, test['Id']], axis=1)
+y_pred = booster_model.predict(dtest) # returns numpy array
 
-result.csv("submission-exactly-Faroned.csv")
+iidd = test_data.Id.ravel()
+test_data = test_data.drop('Id', 1)
+test_data = np.array(test_data)
+predictions = [int(round(value)) for value in y_pred]
+IDs_in_height = np.array(iidd)[np.newaxis].T
+predictions_in_height = np.array(predictions)[np.newaxis].T
+finalMatrix = np.hstack((IDs_in_height, predictions_in_height))
+finalArray = np.asarray(finalMatrix)
+np.savetxt("submission-faron_exact-xgboost-pandas.csv", finalArray, delimiter=",", header="Id,Response", fmt='%d')
+print "Save successful"
