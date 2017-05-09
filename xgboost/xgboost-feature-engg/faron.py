@@ -62,7 +62,7 @@ booster_model = xgb.train(xgb_params, dtrain)
 Predict and write to file
 '''
 
-iidd = test_data.Id.ravel()
+iidd = test.Id.ravel()
 test = test.drop('Id', 1)
 test = np.array(test[features])
 dtest = xgb.DMatrix(test)
