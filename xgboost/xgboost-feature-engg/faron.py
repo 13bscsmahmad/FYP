@@ -23,8 +23,8 @@ TEST_DATE = "{0}/test_date.csv".format(DATA_DIR)
 
 FILENAME = "etimelhoods"
 
-train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN], nrows=NROWS)
-test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN], nrows=NROWS)
+train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN])
+test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN])
 
 train["StartTime"] = -1
 test["StartTime"] = -1
@@ -35,14 +35,14 @@ tr = pd.read_csv(TRAIN_DATE)
 te = pd.read_csv(TEST_DATE)
 
 
-for tr, te in zip(pd.read_csv(TRAIN_DATE), pd.read_csv(TEST_DATE)):
-    feats = np.setdiff1d(tr.columns, [ID_COLUMN]) # get all features i.e. remove ID for all columns
 
-    stime_tr = tr[feats].min(axis=1).values
-    stime_te = te[feats].min(axis=1).values
+feats = np.setdiff1d(tr.columns, [ID_COLUMN]) # get all features i.e. remove ID for all columns
 
-    train.loc[train.Id.isin(tr.Id), 'StartTime'] = stime_tr
-    test.loc[test.Id.isin(te.Id), 'StartTime'] = stime_te
+stime_tr = tr[feats].min(axis=1).values
+stime_te = te[feats].min(axis=1).values
+
+train.loc[train.Id.isin(tr.Id), 'StartTime'] = stime_tr
+test.loc[test.Id.isin(te.Id), 'StartTime'] = stime_te
 
     # nrows += CHUNKSIZE
 #     if nrows >= NROWS:
