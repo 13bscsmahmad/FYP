@@ -23,8 +23,8 @@ TEST_DATE = "{0}/test_date.csv".format(DATA_DIR)
 
 FILENAME = "etimelhoods"
 
-train = pd.read_csv(TRAIN_NUMERIC, usecols=[ID_COLUMN, TARGET_COLUMN])
-test = pd.read_csv(TEST_NUMERIC, usecols=[ID_COLUMN])
+train = pd.read_csv(TRAIN_NUMERIC)
+test = pd.read_csv(TEST_NUMERIC)
 
 train["StartTime"] = -1
 test["StartTime"] = -1
@@ -111,5 +111,7 @@ test_data = np.array(test_data[features])
 dtest = xgb.DMatrix(test_data)
 predictions = booster_model.predict(dtest) # returns numpy array
 np.savetxt("numpy-submission", predictions, fmt='%i')
-result = pd.DataFrame(data=predictions, index=test.index, columns={'Id','Response'})
+result = pd.DataFrame(data=predictions, index=test.index, columns={'Response'})
+result = pd.concat([id, test['Id']], axis=1)
+
 result.csv("submission-exactly-Faroned.csv")
