@@ -24,12 +24,13 @@ PREDICTIONS = "xgboost/xgboost-default/submission-default-xgboost-pandas.csv"
 
 test = pd.read_csv(TEST_DATA)
 predictions = pd.read_csv(PREDICTIONS)
-concatenated = pd.concat([test.set_index('id'),predictions.set_index('id')], axis=1, join='inner').reset_index()
+predictions.rename(columns={'# Id':'Id'}, inplace=True) # because submission file on server has Id column as '# Id'
+concatenated = pd.concat([test.set_index('Id'),predictions.set_index('Id')], axis=1, join='inner').reset_index()
 
 # get all 0s
 
-allZeros = concatenated.loc[concatenated['id'] == 0]
-allOnes = concatenated.loc[concatenated['id'] == 1]
+allZeros = concatenated.loc[concatenated['Response'] == 0]
+allOnes = concatenated.loc[concatenated['Response'] == 1]
 
 
 # select only a few rows from allZeros
@@ -42,16 +43,19 @@ allOnes = allOnes.iloc[:10,:] # first 10 rows, + all columns
 
 # concat allOnes and allZeros randomly, but joined based on column "id"
 
-dfs = [allZeros, allOnes]
-n = len(dfs)
-nrows = dfs[0].shape[0]
-ncols = dfs[0].shape[1]
-A = pd.concat(dfs, axis=1).values.reshape(nrows,-1,ncols)
-sidx = np.random.rand(nrows,n).argsort(1)
-out_arr = A[np.arange(nrows)[:,None],sidx,:].reshape(nrows,-1)
-df = pd.DataFrame(out_arr)
+finalConcat = pd.concat([allOnes.set_index('Id'),allZeros.set_index('Id')], axis=1, join='inner').reset_index()
+finalConcat.to_csv("demo-data.csv")
 
-print df
-df.to_csv("demo-data.csv")
+# dfs = [allZeros, allOnes]
+# n = len(dfs)
+# nrows = dfs[0].shape[0]
+# ncols = dfs[0].shape[1]
+# A = pd.concat(dfs, axis=1).values.reshape(nrows,-1,ncols)
+# sidx = np.random.rand(nrows,n).argsort(1)
+# out_arr = A[np.arange(nrows)[:,None],sidx,:].reshape(nrows,-1)
+# df = pd.DataFrame(out_arr)
+
+# print df
+# df.to_csv("demo-data.csv")
 
 # save to file
