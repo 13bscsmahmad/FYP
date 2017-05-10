@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 TEST_DATA = "Dataset/id-based-features-and-numeric-test.csv"
-PREDICTIONS = "xgboost/submission-default-xgboost-pandas.csv"
+PREDICTIONS = "xgboost/xgboost-default/submission-default-xgboost-pandas.csv"
 
 # CHUNKSIZE = 50000
 # NROWS = 150000
@@ -52,5 +52,6 @@ out_arr = A[np.arange(nrows)[:,None],sidx,:].reshape(nrows,-1)
 df = pd.DataFrame(out_arr)
 
 print df
+df.to_csv("demo-data.csv")
 
 # save to file
