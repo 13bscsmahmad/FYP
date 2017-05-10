@@ -24,12 +24,12 @@ PREDICTIONS = "xgboost/xgboost-default/submission-default-xgboost-pandas.csv"
 
 test = pd.read_csv(TEST_DATA)
 predictions = pd.read_csv(PREDICTIONS)
-concatenated = pd.concat([test.set_index('Id'),predictions.set_index('Id')], axis=1, join='inner').reset_index()
+concatenated = pd.concat([test.set_index('id'),predictions.set_index('id')], axis=1, join='inner').reset_index()
 
 # get all 0s
 
-allZeros = concatenated.loc[concatenated['Id'] == 0]
-allOnes = concatenated.loc[concatenated['Id'] == 1]
+allZeros = concatenated.loc[concatenated['id'] == 0]
+allOnes = concatenated.loc[concatenated['id'] == 1]
 
 
 # select only a few rows from allZeros
