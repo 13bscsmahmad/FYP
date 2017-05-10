@@ -43,7 +43,9 @@ allOnes = allOnes.iloc[:10,:] # first 10 rows, + all columns
 
 # concat allOnes and allZeros randomly, but joined based on column "id"
 
-finalConcat = pd.concat([allOnes.set_index('Id'),allZeros.set_index('Id')], axis=1, join='inner').reset_index()
+#finalConcat = pd.concat([allOnes.set_index('Id'),allZeros.set_index('Id')], axis=1, join='inner').reset_index()
+dfs = [allOnes, allZeros]
+finalConcat = pd.concat(dfs)
 finalConcat.to_csv("demo-data.csv")
 
 # dfs = [allZeros, allOnes]
