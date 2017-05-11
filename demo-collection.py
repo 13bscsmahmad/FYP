@@ -22,7 +22,11 @@ allZeros = allZeros.iloc[:40,:] # first 40 rows, + all columns
 # select only a few rows from allOnes
 allOnes = allOnes.iloc[:10,:] # first 10 rows, + all columns
 
-# concat allOnes and allZeros randomly, but joined based on column "id"
+#Save allZeros and allOnes
+allZeros.to_csv("allZeros.csv", index=False, index_label=False)
+allOnes.to_csv("allOnes.csv", index=False, index_label=False)
+
+# concat allOnes and allZeros vertically, and then save final df.
 dfs = [allOnes, allZeros]
 finalConcat = pd.concat(dfs)
 finalConcat.to_csv("demo-data.csv", index=False, index_label=False)
