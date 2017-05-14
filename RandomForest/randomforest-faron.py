@@ -6,8 +6,8 @@ import numpy as np
 
 import pickle
 
-TRAIN_DATASET = "../../Dataset/id-based-features-and-numeric-train.csv"
-TEST_DATASET = "../../Dataset/id-based-features-and-numeric-test.csv"
+TRAIN_DATASET = "../Dataset/id-based-features-and-numeric-train.csv"
+TEST_DATASET = "../Dataset/id-based-features-and-numeric-test.csv"
 MODEL_NAME = "random-forest-numeric-and-faron.model"
 
 f = pd.read_csv(TRAIN_DATASET)

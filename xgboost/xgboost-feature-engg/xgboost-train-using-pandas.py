@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 import pickle
 import pandas as pd
 
-TRAIN_DATASET = "../../Dataset/id-based-features-and-numeric-train.csv"
-TEST_DATASET = "../../Dataset/id-based-features-and-numeric-test.csv"
+TRAIN_DATASET = "../Dataset/id-based-features-and-numeric-train.csv"
+TEST_DATASET = "../Dataset/id-based-features-and-numeric-test.csv"
 MODEL_NAME = "nANDl_sklearn_xgboost_pandas_faron.model"
 
 f = pd.read_csv(TRAIN_DATASET)
