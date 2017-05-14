@@ -20,7 +20,7 @@ f = f.drop('Id', 1)
 f = np.array(f)
 
 # convert this to sparse matrix  because fit() requires sparse matrix if mising values present in data
-f = sparse.csr_matrix(f)
+f = sparse.csr_matrix(f, dtype=np.float32)
 
 model = RandomForestClassifier(verbose=3, n_jobs=-1)
 print "starting training..."
@@ -39,7 +39,7 @@ ids = g.Id.ravel()
 g = g.drop('Id', 1)
 g = np.array(g)
 # convert this to sparse matrix  because predict() requires sparse matrix if mising values present in data
-g = sparse.csr_matrix(g)
+g = sparse.csr_matrix(g, dtype=np.float32)
 
 print "predicting..."
 y_pred = model.predict(g)
