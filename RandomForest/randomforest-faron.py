@@ -16,12 +16,12 @@ y = f.Response.ravel()
 f = f.drop('Response', 1)
 ids = f.Id.ravel()
 f = f.drop('Id', 1)
-
+f = f.fillna(value=-111)
 f = np.array(f)
 
 # convert this to sparse matrix  because fit() requires sparse matrix if mising values present in data
 #f = sparse.csr_matrix(f, dtype=np.float32)
-f = f.fillna(value=-111)
+
 
 model = RandomForestClassifier(verbose=3, n_jobs=-1)
 print "starting training..."
@@ -38,10 +38,11 @@ print("Saved model. Loading testset...")
 g = pd.read_csv(TEST_DATASET)
 ids = g.Id.ravel()
 g = g.drop('Id', 1)
+g = g.fillna(value=-111)
 g = np.array(g)
 # convert this to sparse matrix  because predict() requires sparse matrix if mising values present in data
 #g = sparse.csr_matrix(g, dtype=np.float32)
-g = g.fillna(value=-111)
+
 print "predicting..."
 y_pred = model.predict(g)
 print "predictions made. Processing and saving..."
