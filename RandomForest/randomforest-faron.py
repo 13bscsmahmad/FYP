@@ -3,6 +3,7 @@ from sklearn.datasets import load_svmlight_file
 from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
+from scipy import sparse
 
 import pickle
 
@@ -17,6 +18,9 @@ ids = f.Id.ravel()
 f = f.drop('Id', 1)
 
 f = np.array(f)
+
+# convert this to sparse matrix  because fit() requires sparse matrix if mising values present in data
+f = sparse.csr_matrix(f)
 
 model = RandomForestClassifier(verbose=3, n_jobs=-1)
 print "starting training..."
@@ -34,6 +38,8 @@ g = pd.read_csv(TEST_DATASET)
 ids = g.Id.ravel()
 g = g.drop('Id', 1)
 g = np.array(g)
+# convert this to sparse matrix  because predict() requires sparse matrix if mising values present in data
+g = sparse.csr_matrix(g)
 
 print "predicting..."
 y_pred = model.predict(g)
